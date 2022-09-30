@@ -13,8 +13,8 @@ class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2)
     {
-        ListNode result;
-        ListNode *ptr = &result;
+        ListNode *result = new ListNode;
+        ListNode *ptr = result;
         div_t sum = {0, 0};
         while (sum.quot == 1 || l1 || l2)
         {
@@ -29,9 +29,10 @@ public:
                 l2 = l2->next;
             }
             sum = div(sum.quot, 10);
-            ptr->next = new ListNode(sum.rem);
-            ptr = ptr->next;
+            result->next = new ListNode(sum.rem);
+            result = result->next;
         }
-        return (result.next);
+        result = ptr->next;
+        return (result);
     }
 };
