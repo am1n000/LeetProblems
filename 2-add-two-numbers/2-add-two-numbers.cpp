@@ -29,10 +29,9 @@ public:
                 l2 = l2->next;
             }
             sum = div(sum.quot, 10);
-            result->next = new ListNode(sum.rem);
-            result = result->next;
+            ptr->next = new ListNode(sum.rem);
+            ptr = ptr->next;
         }
-        result = ptr->next;
-        return (result);
+        return (result->next);
     }
 };
