@@ -6,22 +6,14 @@ public:
         int area = 0;
 		int i = 0;
 		int j = height.size() - 1;
-		std::vector<int>::iterator left = height.begin();
-		std::vector<int>::iterator right = --height.end();
-		while (left != right)
+		while (i < j)
 		{
-			if ((j - i) * std::min(*left, *right) > area)
-				area = (j - i) * std::min(*left, *right);
-			if (*left > *right)
-			{
+			if ((j - i) * std::min(height[i], height[j]) > area)
+				area = (j - i) * std::min(height[i], height[j]);
+			if (height[i] > height[j])
 				j--;
-				right--;
-			}
 			else
-			{
 				i++;
-				left++;
-			}
 		}
 		return (area);
     }
